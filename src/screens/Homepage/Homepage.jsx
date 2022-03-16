@@ -53,8 +53,8 @@ const Homepage = () => {
 
   useEffect(() => {
     //fetch data from API and update state
-    setIndividuals(data)
-    setCompanies(data)
+    setIndividuals(data);
+    setCompanies(data);
   }, []);
 
   const h_handlePageChange = (page) => {
@@ -113,7 +113,11 @@ const Homepage = () => {
   return (
     <div className={styles.wrapper}>
       <Navbar user={currentUser} />
-      <Header headerInfo={header_info} dropdownData={header_select} displayed={header_displayed} />
+      <Header
+        headerInfo={header_info}
+        dropdownData={header_select}
+        displayed={header_displayed}
+      />
       <MainBoard
         individualsData={individualsData}
         companiesData={companiesData}
