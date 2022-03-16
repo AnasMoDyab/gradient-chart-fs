@@ -1,0 +1,17 @@
+:root {
+  --color-text-1: #753BBD;
+  --color-text-2: #AF272F;
+  --color-text-3: #FCE300;
+  --color-text-4: #0057B8;
+  --color-text-5: #75BA20;
+
+  --color-red-main: #E03E52;
+  --color-yellow-main: #FCE300;
+
+  --main-background-color: #FFFFFF;
+  --secondary-background-color: #C6D6E3;
+  --primary-text-color: #000000;
+
+  --primary-gradient: linear-gradient(180deg, #0057B8 0%, #0057B800 100%);
+  --secondary-gradient: linear-gradient(180deg, #753BBD 0%, #753BBD00 100%);
+}
