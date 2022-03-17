@@ -5,14 +5,14 @@ import VerticalPagination from "../Pagination/VerticalPagination/VerticalPaginat
 import GenderSort from "../GenderSort/GenderSort";
 import Meetings from "../Meetings/Meetings";
 import DoughnutChart from "../DoughnutChart/DoughnutChart";
-
+import CompaniesChart from "../LineChart/CompaniesChart";
 import funds from "../../assets/icons/funds.svg";
 import Group from "../../assets/icons/group.png";
 import SyncIcon from "../../assets/icons/SyncIcon.svg";
 import history from "../../assets/icons/history.svg";
 import verificationIcon from "../../assets/icons/verificationIcon.svg";
 import lockedPadlock from "../../assets/icons/lockedPadlock.svg";
-
+import IndividualsChart from "../LineChart/IndividualsChart";
 import styles from "./MainBoard.module.css";
 
 const MainBoard = ({
@@ -84,16 +84,28 @@ const MainBoard = ({
               <div className={styles.upperChart}>
                 {/* Individuals Chart */}
                 {/* Required data: individuals */}
+                <IndividualsChart
+                  className={styles.chartcolor}
+                  labels={individuals.labels}
+                  data={individuals.data}
+                />
               </div>
               <div className={styles.lowerChart}>
                 {/* Companies Chart */}
                 {/* Required data: companies */}
+                <CompaniesChart
+                  labels={companies.labels}
+                  data={companies.data}
+                />
               </div>
             </div>
             <div className={styles.displayInfo}>
               <div className={styles.donutWrapper}>
                 <div className={styles.chartWrapper}>
-                  <DoughnutChart labels={doughnut.labels} data={doughnut.data} />
+                  <DoughnutChart
+                    labels={doughnut.labels}
+                    data={doughnut.data}
+                  />
                   <div className={styles.donutLength}>
                     <h2>{getDoughnutLenght()}</h2>
                   </div>
@@ -103,11 +115,15 @@ const MainBoard = ({
                   <div className={styles.chartStats}>
                     <p className={styles.pCol}>
                       <span>{doughnut.labels[0]}</span>
-                      <span className={styles.companies}>{doughnut.data[0]}</span>
+                      <span className={styles.companies}>
+                        {doughnut.data[0]}
+                      </span>
                     </p>
                     <p className={styles.pCol}>
                       <span>{doughnut.labels[1]}</span>
-                      <span className={styles.individuals}>{doughnut.data[1]}</span>
+                      <span className={styles.individuals}>
+                        {doughnut.data[1]}
+                      </span>
                     </p>
                   </div>
                 </div>
@@ -129,7 +145,10 @@ const MainBoard = ({
               </div>
 
               <div className={styles.meetings}>
-                <Meetings individuals={individualsData} companies={companiesData} />
+                <Meetings
+                  individuals={individualsData}
+                  companies={companiesData}
+                />
               </div>
             </div>
           </div>

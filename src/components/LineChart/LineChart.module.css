@@ -1,0 +1,14 @@
+.canvas {
+    position: relative;
+   padding: 1rem 0 1rem 1rem;
+     margin-bottom: 2rem;
+    background-color: #c6d6e3;
+    z-index: 10;
+    max-height:95%;
+    border-radius: 8px;
+}
+.chartcolor {
+    background: rgb(175,182,245);
+    background: linear-gradient(90deg, rgba(175,182,245,1) 1%, rgba(108,169,242,1) 15%, rgba(218,232,240,1) 86%, rgba(107,145,232,1) 100%, rgba(0,212,255,1) 100%);
+
+}

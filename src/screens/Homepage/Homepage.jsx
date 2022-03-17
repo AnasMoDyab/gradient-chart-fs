@@ -1,28 +1,47 @@
-import React, { useState, useEffect } from "react";
-import Navbar from "../../components/Navbar/Navbar";
+import { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import MainBoard from "../../components/MainBoard/MainBoard";
-
+import Navbar from "../../components/Navbar/Navbar";
 import styles from "./Homepage.module.css";
 
 const Homepage = () => {
-  const [individualsData] = useState([]);
-  const [companiesData] = useState([]);
+  const [individualsData, setIndividuals] = useState([]);
+  const [companiesData, setCompanies] = useState([]);
   const [currentUser] = useState("Elsa Andersen");
 
-  const [individuals, setIndividuals] = useState({
-    labels: [""],
+  const [individuals] = useState({
+    labels: [
+      "",
+      "Jun 19",
+      "Jul 19",
+      "Aug 19",
+      "Sep 19",
+      "Oct 19",
+      "Nov 20",
+      "Dec 20",
+      "",
+    ],
     label: "Signups",
-    data: [0],
+    data: [0, 6, 4, 9, 7, 4, 5, 8, 5],
   });
-  const [companies, setCompanies] = useState({
-    labels: [""],
+  const [companies] = useState({
+    labels: [
+      "",
+      "Jun 19",
+      "Jul 19",
+      "Aug 19",
+      "Sep 19",
+      "Oct 19",
+      "Nov 20",
+      "Dec 20",
+      "",
+    ],
     label: "Signups",
-    data: [],
+    data: [0, 6, 4, 9, 7, 4, 5, 8, 5],
   });
 
   const [doughnut] = useState({
-    data: [0, 0],
+    data: [100, 100],
     labels: ["Companies", "Individuals"],
   });
 
@@ -50,11 +69,34 @@ const Homepage = () => {
   useEffect(() => {
     sort_handleDisplayedValue();
   }, []);
+  const fetchData = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    await fetch(`http://localhost:5000/api/individuals`, options)
+      .then((response) => response.json())
+      .then((res) => setIndividuals(res))
+      .catch((error) => console.log("error ", error));
+  };
+  const fetchCompanies = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+    await fetch(`http://localhost:5000/api/Companies`, options)
+      .then((response) => response.json())
+      .then((res) => setCompanies(res))
+      .catch((error) => console.log("error ", error));
+  };
 
   useEffect(() => {
-    //fetch data from API and update state
-    setIndividuals(data);
-    setCompanies(data);
+    fetchCompanies();
+    fetchData();
   }, []);
 
   const h_handlePageChange = (page) => {

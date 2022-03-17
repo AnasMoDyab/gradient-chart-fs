@@ -19,7 +19,7 @@ public class CompaniesController : ControllerBase
         {
             var company = new Company();
             company.Id = Faker.RandomNumber.Next(0, 100);
-            company.meetingDate = new DateTime(2022,5, 5);
+            company.meetingDate = new DateTime(2022, 5, 5);
             company.companyNames = Faker.Company.Name();
             company.gender = Faker.Country.Name();
             company.names = Faker.Name.FullName(Faker.NameFormats.WithPrefix);
